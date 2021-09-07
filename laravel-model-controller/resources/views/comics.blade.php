@@ -6,10 +6,10 @@
 
     <div class="container">
         <div class="card-container">
-            @foreach($fumetti as $fumetto)
+            @foreach($fumetti as $key => $fumetto)
             <div class="card">
                 <img src="{{ $fumetto['thumb'] }}" alt="{{ $fumetto['title'] }}">
-                <div class="layover"><a href=""> {{ $fumetto['title'] }} </a></div>
+                <div class="layover"><a href="{{ route('pagina-comic', ['id' => $key])}}"> {{ $fumetto['title'] }} </a></div>
             </div>
             @endforeach
         </div>
