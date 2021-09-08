@@ -13,60 +13,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-})->name('pagina-home');
+Route::get('/', 'HomeController@index')->name('pagina-home');
 
-Route::get('/characters', function () {
-    return view('characters');
-})->name('pagina-characters');
+Route::get('/characters', 'HomeController@characters')->name('pagina-characters');
 
-Route::get('/comics', function () {
+Route::get('/comics', 'ComicController@comics')->name('pagina-comics');
 
-    $comics = config('comics');
+Route::get('/detail/{id}', 'ComicController@show')->name('pagina-detail');
 
-    $data = ['fumetti' => $comics];
+Route::get('/movies', 'HomeController@movies')->name('pagina-movies');
 
-    return view('comics', $data);
-})->name('pagina-comics');
+Route::get('/tv', 'HomeController@tv')->name('pagina-tv');
 
-Route::get('/comic/{id}', function ($id) {
+Route::get('/games', 'HomeController@games')->name('pagina-games');
 
-    $comics = config('comics');
+Route::get('/collectibles', 'HomeController@collectibles')->name('pagina-collectibles');
 
-    $data = ['fumetto' => $comics[$id]];
+Route::get('/videos', 'HomeController@videos')->name('pagina-videos');
 
-    return view('comic', $data);
-})->name('pagina-comic');
+Route::get('/fans', 'HomeController@fans')->name('pagina-fans');
 
-Route::get('/movies', function () {
-    return view('movies');
-})->name('pagina-movies');
+Route::get('/news', 'HomeController@news')->name('pagina-news');
 
-Route::get('/tv', function () {
-    return view('tv');
-})->name('pagina-tv');
-
-Route::get('/games', function () {
-    return view('games');
-})->name('pagina-games');
-
-Route::get('/collectibles', function () {
-    return view('collectibles');
-})->name('pagina-collectibles');
-
-Route::get('/videos', function () {
-    return view('videos');
-})->name('pagina-videos');
-
-Route::get('/fans', function () {
-    return view('fans');
-})->name('pagina-fans');
-
-Route::get('/news', function () {
-    return view('news');
-})->name('pagina-news');
-
-Route::get('/shop', function () {
-    return view('shop');
-})->name('pagina-shop');
+Route::get('/shop', 'HomeController@shop')->name('pagina-shop');

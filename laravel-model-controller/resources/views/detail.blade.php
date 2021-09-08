@@ -1,5 +1,5 @@
 @extends('layout.app')
-@section ('title', 'pagina-comic')
+@section ('title', 'pagina-detail')
 
 @section('content')
 
