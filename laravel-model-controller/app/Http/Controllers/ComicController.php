@@ -1,5 +1,7 @@
 <?php
 
+/*
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -8,11 +10,9 @@ class ComicController extends Controller
 {
     public function comics() {
 
-        $comics = config('comics');
-    
-        $data = ['fumetti' => $comics];
-    
-        return view('comics', $data);
+        $fumetti = config('comics');
+        
+        return view('comics', compact('fumetti'));
     }
 
     public function show($id) {
@@ -24,3 +24,28 @@ class ComicController extends Controller
         return view('detail', $data);
     }
 }
+
+*/
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Comic;
+
+class ComicController extends Controller
+{
+    public function comics() {
+
+        $fumetti = Comic::all();
+        
+        return view('comics', compact('fumetti'));
+    }
+
+    public function show($id) {
+
+        $comics = Comic::where('id', $id);
+        
+        return view('detail', compact('comics'));
+    }
+}
+
